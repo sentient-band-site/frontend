@@ -16,34 +16,36 @@ const Header = () => {
             <Image src={SentientLogo} width={100} height={100} alt="logo" />
           </a>
         </div>
-        <nav className="navlinks">
-          <ul className="navlinks-list">
-            <li>
-              <a href="#new-release" className="navlinks-link tidal">
-                New Release
-              </a>
-            </li>
-            <li>
-              <a className="navlinks-link active" href="#about">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#releases" className="navlinks-link boyw">
-                Releases
-              </a>
-            </li>
-            <li>
-              <a href="#store" className="navlinks-link">
-                Store
-              </a>
-            </li>
-            <li>
-              <a href="#contact" className="navlinks-link">
-                Contact
-              </a>
-            </li>
-          </ul>
+        <nav className="flex justify-center">
+          <div className="container mx-28 p-4">
+            <ul className="flex justify-between items-center">
+              <li>
+                <a href="#new-release" className="navlinks-link tidal">
+                  New Release
+                </a>
+              </li>
+              <li>
+                <a className="navlinks-link active" href="#about">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="#releases" className="navlinks-link boyw">
+                  Releases
+                </a>
+              </li>
+              <li>
+                <a href="#store" className="navlinks-link">
+                  Store
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className="navlinks-link">
+                  Contact
+                </a>
+              </li>
+            </ul>
+          </div>
         </nav>
       </header>
       <nav>
