@@ -3,8 +3,8 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="relative">
-        <div className="min-h-screen p-8">
+      {/* <main className="relative">
+        <div className="">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
           accusamus sequi adipisci asperiores voluptatem id, quod consectetur
           officiis similique, nihil ea aspernatur natus rerum. Expedita
@@ -348,7 +348,7 @@ export default function Home() {
           reprehenderit temporibus eius quis est fugiat corrupti aliquid, autem
           asperiores earum modi animi iusto nisi, ratione quibusdam? Earum?
         </div>
-      </main>
+      </main> */}
     </>
   );
 }
