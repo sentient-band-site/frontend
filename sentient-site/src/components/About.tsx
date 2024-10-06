@@ -9,9 +9,15 @@ const About = () => {
     <>
       <div id="home"></div>
       <div className="flex justify-center m-32" id="about">
-        <Image src={Light} alt="lightpath" />
         <motion.div
-          className="ml-10"
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+        >
+          <Image src={Light} sizes="500" alt="lightpath" />
+        </motion.div>
+        <motion.div
+          className="ml-10 w-1/2"
           initial={{ x: 100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
