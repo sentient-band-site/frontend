@@ -1,19 +1,39 @@
 "use client";
 import Image from "next/image";
+import { Video } from "./Video";
 import Tidal from "../public/sentient tidal shirt.png";
 import BeOnYourOwnWay from "../public/BOYW ART.jpg";
 import TheTruth from "../public/The Truth That's Behind Us.jpg";
 import RedSky from "../public/RSAM 1400.jpg";
 import SaltLight from "../public/salt and light 1400.jpg";
+import Isophase from "../public/Isophase.jpg";
 
 const Releases = () => {
   return (
     <>
-      <div className="new-release tidal" id="new-release">
-        <div className="trackart">
-          <Image src={Tidal} alt="tidal" />
+      <div className="flex justify-center m-32" id="new-release">
+        <div>
+          <Image src={Isophase} sizes="500" alt="Isophase" />
         </div>
-        <div className="tracklist">
+        <div className="ml-10">
+          <Video
+            src="https://www.youtube.com/embed/uTbGNekZ9SE?si=2M1G5p4UftcexlPY"
+            title="Isophase"
+          />
+          <h2>Isophase</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eum
+            praesentium culpa expedita vero id delectus ipsam ullam earum porro.
+            Labore adipisci distinctio nostrum esse in laboriosam impedit,
+            tempora consequatur.
+          </p>
+        </div>
+      </div>
+      <div className="flex justify-center m-32" id="releases">
+        <div className="">
+          <Image src={Tidal} sizes="500" alt="tidal" />
+        </div>
+        <div className="ml-10">
           <h2>Tidal</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur
@@ -23,11 +43,15 @@ const Releases = () => {
           </p>
         </div>
       </div>
-      <div className="new-release-b boyw" id="releases">
-        <div className="trackart">
-          <Image src={BeOnYourOwnWay} alt="BOYW" />
+      <div className="flex justify-center m-32">
+        <div className="">
+          <Image src={BeOnYourOwnWay} sizes="500" alt="BOYW" />
         </div>
-        <div className="tracklist">
+        <div className="ml-10">
+          <Video
+            src="https://www.youtube.com/embed/zooiw_COQKg?si=99zEIr1a0yFJ7iOQ"
+            title="Be On Your Way"
+          />
           <h2>Be On Your Own Way</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur
@@ -37,11 +61,15 @@ const Releases = () => {
           </p>
         </div>
       </div>
-      <div className="new-release" id="new-release">
-        <div className="trackart">
-          <Image src={TheTruth} alt="The Truth That's Behind Us" />
+      <div className="flex justify-center m-32">
+        <div className="">
+          <Image src={TheTruth} sizes="500" alt="The Truth That's Behind Us" />
         </div>
-        <div className="tracklist">
+        <div className="ml-10">
+          <Video
+            src="https://www.youtube.com/embed/1DqXVfzAMOk?si=0O9uXxZdyYlUVYls"
+            title="The Truth That's Behind Us"
+          />
           <h2>The Truth That{"'"}s Behind Us</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur
@@ -51,11 +79,15 @@ const Releases = () => {
           </p>
         </div>
       </div>
-      <div className="new-release-b toggle" id="new-release-b">
+      <div className="flex justify-center m-32">
         <div className="trackart">
-          <Image src={RedSky} alt="Red Sky at Morning" />
+          <Image src={RedSky} sizes="500" alt="Red Sky at Morning" />
         </div>
-        <div className="tracklist">
+        <div className="ml-10">
+          <Video
+            src="https://www.youtube.com/embed/E-zQnc8YPOM?si=_qMW2LZMxx4OxaTv"
+            title="Red Sky At Morning"
+          />
           <h2>Red Sky At Morning</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur
@@ -65,11 +97,15 @@ const Releases = () => {
           </p>
         </div>
       </div>
-      <div className="new-release" id="new-release">
-        <div className="trackart">
-          <Image src={SaltLight} alt="Salt and Light" />
+      <div className="flex justify-center m-32">
+        <div className="">
+          <Image src={SaltLight} sizes="500" alt="Salt and Light" />
         </div>
-        <div className="tracklist">
+        <div className="ml-10">
+          <Video
+            src="https://www.youtube.com/embed/xstwjyruCtg?si=g6Vf7FVy5oDIThhx"
+            title="Cascading"
+          />
           <h2>Salt + Light</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur
