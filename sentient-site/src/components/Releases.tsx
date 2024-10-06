@@ -15,7 +15,7 @@ const Releases = () => {
         <div>
           <Image src={Isophase} sizes="500" alt="Isophase" />
         </div>
-        <div className="ml-10">
+        <div className="ml-10 w-1/2">
           <Video
             src="https://www.youtube.com/embed/uTbGNekZ9SE?si=2M1G5p4UftcexlPY"
             title="Isophase"
@@ -33,7 +33,8 @@ const Releases = () => {
         <div className="">
           <Image src={Tidal} sizes="500" alt="tidal" />
         </div>
-        <div className="ml-10">
+        <div className="ml-10 w-1/2">
+          <Video src="" title="Tidal" />
           <h2>Tidal</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur
@@ -47,7 +48,7 @@ const Releases = () => {
         <div className="">
           <Image src={BeOnYourOwnWay} sizes="500" alt="BOYW" />
         </div>
-        <div className="ml-10">
+        <div className="ml-10 w-1/2">
           <Video
             src="https://www.youtube.com/embed/zooiw_COQKg?si=99zEIr1a0yFJ7iOQ"
             title="Be On Your Way"
@@ -65,7 +66,7 @@ const Releases = () => {
         <div className="">
           <Image src={TheTruth} sizes="500" alt="The Truth That's Behind Us" />
         </div>
-        <div className="ml-10">
+        <div className="ml-10 w-1/2">
           <Video
             src="https://www.youtube.com/embed/1DqXVfzAMOk?si=0O9uXxZdyYlUVYls"
             title="The Truth That's Behind Us"
@@ -83,7 +84,7 @@ const Releases = () => {
         <div className="trackart">
           <Image src={RedSky} sizes="500" alt="Red Sky at Morning" />
         </div>
-        <div className="ml-10">
+        <div className="ml-10 w-1/2">
           <Video
             src="https://www.youtube.com/embed/E-zQnc8YPOM?si=_qMW2LZMxx4OxaTv"
             title="Red Sky At Morning"
@@ -101,7 +102,7 @@ const Releases = () => {
         <div className="">
           <Image src={SaltLight} sizes="500" alt="Salt and Light" />
         </div>
-        <div className="ml-10">
+        <div className="ml-10 w-1/2">
           <Video
             src="https://www.youtube.com/embed/xstwjyruCtg?si=g6Vf7FVy5oDIThhx"
             title="Cascading"
