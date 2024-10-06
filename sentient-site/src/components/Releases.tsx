@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Video } from "./Video";
+import { motion } from "framer-motion";
 import Tidal from "../public/sentient tidal shirt.png";
 import BeOnYourOwnWay from "../public/BOYW ART.jpg";
 import TheTruth from "../public/The Truth That's Behind Us.jpg";
@@ -11,7 +12,13 @@ import Isophase from "../public/Isophase.jpg";
 const Releases = () => {
   return (
     <>
-      <div className="flex justify-center m-32" id="new-release">
+      <motion.div
+        className="flex justify-center m-32"
+        id="new-release"
+        initial={{ x: -100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <div>
           <Image src={Isophase} sizes="500" alt="Isophase" />
         </div>
@@ -28,8 +35,14 @@ const Releases = () => {
             tempora consequatur.
           </p>
         </div>
-      </div>
-      <div className="flex justify-center m-32" id="releases">
+      </motion.div>
+      <motion.div
+        className="flex justify-center m-32"
+        initial={{ x: 100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        id="releases"
+      >
         <div className="">
           <Image src={Tidal} sizes="500" alt="tidal" />
         </div>
@@ -43,8 +56,13 @@ const Releases = () => {
             illum optio itaque minima, incidunt quisquam? Fuga.
           </p>
         </div>
-      </div>
-      <div className="flex justify-center m-32">
+      </motion.div>
+      <motion.div
+        className="flex justify-center m-32"
+        initial={{ x: -100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <div className="">
           <Image src={BeOnYourOwnWay} sizes="500" alt="BOYW" />
         </div>
@@ -61,8 +79,13 @@ const Releases = () => {
             illum optio itaque minima, incidunt quisquam? Fuga.
           </p>
         </div>
-      </div>
-      <div className="flex justify-center m-32">
+      </motion.div>
+      <motion.div
+        className="flex justify-center m-32"
+        initial={{ x: 100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <div className="">
           <Image src={TheTruth} sizes="500" alt="The Truth That's Behind Us" />
         </div>
@@ -79,8 +102,13 @@ const Releases = () => {
             illum optio itaque minima, incidunt quisquam? Fuga.
           </p>
         </div>
-      </div>
-      <div className="flex justify-center m-32">
+      </motion.div>
+      <motion.div
+        className="flex justify-center m-32"
+        initial={{ x: -100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <div className="trackart">
           <Image src={RedSky} sizes="500" alt="Red Sky at Morning" />
         </div>
@@ -97,8 +125,13 @@ const Releases = () => {
             illum optio itaque minima, incidunt quisquam? Fuga.
           </p>
         </div>
-      </div>
-      <div className="flex justify-center m-32">
+      </motion.div>
+      <motion.div
+        className="flex justify-center m-32"
+        initial={{ x: 100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+      >
         <div className="">
           <Image src={SaltLight} sizes="500" alt="Salt and Light" />
         </div>
@@ -115,7 +148,7 @@ const Releases = () => {
             illum optio itaque minima, incidunt quisquam? Fuga.
           </p>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };
