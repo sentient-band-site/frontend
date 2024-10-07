@@ -16,7 +16,7 @@ const Contact = () => {
             id="name"
             name="name"
             required
-            className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 text-sm outline-blue-500 focus:bg-transparent"
+            className="w-full rounded-md py-3 px-4 bg-[#ededed] text-zinc-500 text-sm outline-blue-500 focus:bg-transparent"
             placeholder="Name"
           />
         </div>
@@ -26,7 +26,7 @@ const Contact = () => {
             id="email"
             name="email"
             required
-            className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 text-sm outline-blue-500 focus:bg-transparent"
+            className="w-full rounded-md py-3 px-4 bg-[#ededed] text-zinc-500 text-sm outline-blue-500 focus:bg-transparent"
             placeholder="Email"
           />
         </div>
@@ -36,13 +36,13 @@ const Contact = () => {
             id="message"
             rows={5}
             required
-            className="w-full rounded-md py-3 px-4 bg-gray-100 text-gray-800 text-sm outline-blue-500 focus:bg-transparent"
+            className="w-full rounded-md py-3 px-4 bg-[#ededed] text-zinc-500 text-sm outline-blue-500 focus:bg-transparent"
             placeholder="Message"
           />
         </div>
         <button
           type="submit"
-          className="text-white bg-blue-500 hover:bg-blue-600 tracking-wide rounded-md text-sm px-4 py-3 w-full !mt-6"
+          className="text-[#ededed] bg-zinc-500 hover:bg-[#ededed] hover:text-[#0a0a0a] hover:-translate-y-1 hover:scale-105 transition ease-out tracking-wide rounded-md text-sm px-4 py-3 w-full !mt-3"
         >
           Send Message
         </button>
