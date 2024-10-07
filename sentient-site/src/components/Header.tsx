@@ -2,10 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import SentientLogo from "../public/Sentient-Logo.png";
-import Instagram from "../public/icon/iconmonstr-instagram-14-240.png";
-import Youtube from "../public/icon/iconmonstr-youtube-9-240.png";
-import Spotify from "../public/icon/iconmonstr-spotify-4-240.png";
-import Apple from "../public/icon/iconmonstr-apple-os-4-240.png";
+import Hamburger from "./Hamburger";
 
 import { motion, useScroll, useTransform, useAnimation } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
@@ -54,8 +51,9 @@ const Header = () => {
             />
           </a>
         </motion.div>
+        <Hamburger />
 
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           animate={navbarControls}
           viewport={{ once: true }}
@@ -139,7 +137,7 @@ const Header = () => {
               </ul>
             </div>
           </nav>
-        </motion.div>
+        </motion.div> */}
       </header>
     </>
   );
