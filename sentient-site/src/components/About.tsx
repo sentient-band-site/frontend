@@ -21,6 +21,7 @@ const About = () => {
           initial={{ x: 100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true }}
         >
           <h2 className="mb-5">We are Sentient</h2>
           <p>

@@ -8,7 +8,7 @@ import Spotify from "../public/icon/iconmonstr-spotify-4-240.png";
 import Apple from "../public/icon/iconmonstr-apple-os-4-240.png";
 
 import { motion, useScroll, useTransform, useAnimation } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 const Header = () => {
   const targetRef = useRef(null);
@@ -21,24 +21,31 @@ const Header = () => {
   const moveLogoUp = useTransform(scrollYProgress, [0, 0.5], [0, -400]);
 
   const navbarControls = useAnimation();
+  const [navbarShown, setNavbarShown] = useState(false);
+  const [logoScaled, setLogoScaled] = useState(false);
+
   useEffect(() => {
     const release = scrollYProgress.onChange((latestProgress) => {
-      if (latestProgress >= 0.5) {
+      if (latestProgress >= 0.5 && !navbarShown) {
         navbarControls.start({ opacity: 1, transition: { duration: 1 } });
+        setNavbarShown(true);
       }
-      if (latestProgress <= 0.5) {
-        navbarControls.start({ opacity: 0, transition: { duration: 1 } });
+      if (latestProgress >= 0.5 && !logoScaled) {
+        setLogoScaled(true);
       }
     });
     return release;
-  }, [scrollYProgress, navbarControls]);
+  }, [scrollYProgress, navbarControls, navbarShown, logoScaled]);
 
   return (
     <>
       <header className="h-screen">
         <motion.div
           className="fixed top-0 left-0 w-full h-screen flex justify-center z-50"
-          style={{ scale: scaleLogo, y: moveLogoUp }}
+          style={{
+            scale: logoScaled ? 0.1 : scaleLogo,
+            y: logoScaled ? -400 : moveLogoUp,
+          }}
           ref={targetRef}
         >
           <a href="#home">
@@ -52,8 +59,12 @@ const Header = () => {
           </a>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0 }} animate={navbarControls}>
-          <nav className="fixed bg-[#0a0a0a] w-full h-48 pt-24 flex justify-center align-end flex-wrap top-0 z-40">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={navbarControls}
+          viewport={{ once: true }}
+        >
+          <nav className="fixed bg-[#0a0a0a] w-full h-48 pt-24 flex justify-center align-end flex-wrap top-0 z-50">
             <div className="container mx-auto flex justify-center p-4">
               <ul className="flex justify-between items-center space-x-8">
                 <li>
