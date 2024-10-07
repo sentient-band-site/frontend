@@ -4,7 +4,7 @@ import Image from "next/image";
 import SentientLogo from "../public/Sentient-Logo.png";
 import Hamburger from "./Hamburger";
 
-import { motion, useScroll, useTransform, useAnimation } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
 const Header = () => {
