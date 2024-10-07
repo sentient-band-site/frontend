@@ -22,7 +22,6 @@ const Header = () => {
 
   const navbarControls = useAnimation();
   const [navbarShown, setNavbarShown] = useState(false);
-  const [logoScaled, setLogoScaled] = useState(false);
 
   useEffect(() => {
     const release = scrollYProgress.onChange((latestProgress) => {
@@ -30,12 +29,9 @@ const Header = () => {
         navbarControls.start({ opacity: 1, transition: { duration: 1 } });
         setNavbarShown(true);
       }
-      if (latestProgress >= 0.5 && !logoScaled) {
-        setLogoScaled(true);
-      }
     });
     return release;
-  }, [scrollYProgress, navbarControls, navbarShown, logoScaled]);
+  }, [scrollYProgress, navbarControls, navbarShown]);
 
   return (
     <>
@@ -43,8 +39,8 @@ const Header = () => {
         <motion.div
           className="fixed top-0 left-0 w-full h-screen flex justify-center z-50"
           style={{
-            scale: logoScaled ? 0.1 : scaleLogo,
-            y: logoScaled ? -400 : moveLogoUp,
+            scale: scaleLogo,
+            y: moveLogoUp,
           }}
           ref={targetRef}
         >
