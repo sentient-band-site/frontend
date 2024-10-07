@@ -13,6 +13,7 @@ const About = () => {
           initial={{ x: -100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ once: true }}
         >
           <Image src={Light} sizes="500" alt="lightpath" />
         </motion.div>
