@@ -31,10 +31,10 @@ const Releases = () => {
             />
             <h2>Isophase</h2>
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe eum
-              praesentium culpa expedita vero id delectus ipsam ullam earum
-              porro. Labore adipisci distinctio nostrum esse in laboriosam
-              impedit, tempora consequatur.
+              A heavy addition to our discography that builds upon the sound we
+              {"'"}ve been developing since the start. We{"'"}ve been working on
+              this one since the start of Sentient but it was never in a state
+              we could show to you until now.
             </p>
           </div>
         </motion.div>
@@ -53,10 +53,10 @@ const Releases = () => {
             <Video src="" title="Tidal" />
             <h2>Tidal</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur
-              quia voluptas, veritatis reprehenderit fugiat assumenda
-              necessitatibus. Quibusdam fugit explicabo minus dicta, dolorem hic
-              illum optio itaque minima, incidunt quisquam? Fuga.
+              Tidal is an emotional experience that crashes like waves. It{"'"}s
+              a deeply thoughtful song about grief that dives into the
+              experience and the realities of loss. Open the door and let it
+              envelop you.
             </p>
           </div>
         </motion.div>
@@ -77,10 +77,10 @@ const Releases = () => {
             />
             <h2>Be On Your Own Way</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur
-              quia voluptas, veritatis reprehenderit fugiat assumenda
-              necessitatibus. Quibusdam fugit explicabo minus dicta, dolorem hic
-              illum optio itaque minima, incidunt quisquam? Fuga.
+              Our take on Daughter{"'"}s beautiful song, Be On Your Own Way has
+              a more heavier tone. This song spoke to us on a level we couldn
+              {"'"}t describe and felt compelled to make a version that was true
+              to us.
             </p>
           </div>
         </motion.div>
@@ -105,10 +105,8 @@ const Releases = () => {
             />
             <h2>The Truth That{"'"}s Behind Us</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur
-              quia voluptas, veritatis reprehenderit fugiat assumenda
-              necessitatibus. Quibusdam fugit explicabo minus dicta, dolorem hic
-              illum optio itaque minima, incidunt quisquam? Fuga.
+              The title song of our full length album is another song that we
+              were building on since before Sentient was a band.
             </p>
           </div>
         </motion.div>
@@ -129,10 +127,8 @@ const Releases = () => {
             />
             <h2>Red Sky At Morning</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur
-              quia voluptas, veritatis reprehenderit fugiat assumenda
-              necessitatibus. Quibusdam fugit explicabo minus dicta, dolorem hic
-              illum optio itaque minima, incidunt quisquam? Fuga.
+              A deeply emotional song about loss and grappling with the
+              realities and trials life can throw at us.
             </p>
           </div>
         </motion.div>
@@ -151,12 +147,10 @@ const Releases = () => {
               src="https://www.youtube.com/embed/xstwjyruCtg?si=g6Vf7FVy5oDIThhx"
               title="Cascading"
             />
-            <h2>Salt + Light</h2>
+            <h2>Cascading</h2>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur
-              quia voluptas, veritatis reprehenderit fugiat assumenda
-              necessitatibus. Quibusdam fugit explicabo minus dicta, dolorem hic
-              illum optio itaque minima, incidunt quisquam? Fuga.
+              Cascading is one of the first songs we ever wrote and for that,
+              will hold a special place in our hearts.
             </p>
           </div>
         </motion.div>
