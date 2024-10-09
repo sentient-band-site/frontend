@@ -26,7 +26,7 @@ const About = () => {
           />
         </motion.div>
         <motion.div
-          className="md:ml-10 w-full lg:w-1/3  mt-5 md:mt-0"
+          className="md:ml-10 w-full lg:w-1/3 mt-5 md:mt-0"
           initial={{ x: 100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
