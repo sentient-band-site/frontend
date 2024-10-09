@@ -17,14 +17,11 @@ const Header = () => {
   const scaleLogo = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
   const moveLogoUp = useTransform(scrollYProgress, [0, 0.5], [0, -450]);
 
-  // const navbarControls = useAnimation();
-  // const [navbarShown, setNavbarShown] = useState(false);
   const [isScaledDown, setIsScaledDown] = useState(false);
 
   useEffect(() => {
     const release = scrollYProgress.onChange((latestProgress) => {
       if (latestProgress >= 0.5) {
-        // navbarControls.start({ opacity: 1, transition: { duration: 1 } });
         setIsScaledDown(true);
       } else {
         setIsScaledDown(false);
@@ -37,7 +34,7 @@ const Header = () => {
     <>
       <header className="h-screen">
         <motion.div
-          className={`fixed top-0 left-0 w-full h-screen flex justify-center items-center z-50`}
+          className={`fixed top-0 left-0 w-screen h-screen flex justify-center items-center z-50`}
           style={{
             scale: scaleLogo,
             y: moveLogoUp,

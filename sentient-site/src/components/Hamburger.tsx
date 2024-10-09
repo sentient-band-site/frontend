@@ -89,7 +89,8 @@ const Hamburger = () => {
                     transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
                   >
                     <a href="#store" className="" onClick={handleNavbar}>
-                      Store
+                      {/* Store */}
+                      Coming Soon
                     </a>
                   </motion.div>
                 </li>
