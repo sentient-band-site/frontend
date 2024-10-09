@@ -8,7 +8,7 @@ const Contact = () => {
         method="post"
         encType="text/plain"
         id="contact"
-        className="w-1/3 m-auto space-y-4"
+        className="w-10/12 m-auto space-y-4"
       >
         <div>
           <input
