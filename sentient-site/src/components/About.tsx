@@ -9,7 +9,7 @@ const About = () => {
     <>
       <div id="home"></div>
       <div
-        className="flex flex-col md:flex-row justify-center m-10 md:m-32 md:w-9/12"
+        className="flex flex-col md:flex-row justify-center m-10 md:m-32"
         id="about"
       >
         <motion.div
@@ -18,20 +18,25 @@ const About = () => {
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
         >
-          <Image src={Light} sizes="500" alt="lightpath" />
+          <Image
+            src={Light}
+            sizes="500"
+            alt="lightpath"
+            className="lg:w-full"
+          />
         </motion.div>
         <motion.div
-          className="md:ml-10 md:w-1/2"
+          className="md:ml-10 w-full lg:w-1/3  mt-5 md:mt-0"
           initial={{ x: 100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
         >
           <div className="w-full">
-            <h2 className="mt-5 md:mt-0 mb-5 text-xl md:text-2xl font-bold uppercase tracking-wide">
+            <h2 className="mt-5 md:mt-0 mb-5 text-xl md:text-2xl font-bold uppercase tracking-wide text-center sm:text-left">
               We are Sentient
             </h2>
-            <p className="">
+            <p className="lg:text-lg md:mt-16">
               A 5-piece band from Tokyo with modern metal, post-rock, and
               ambient music influences If there is a singular concept behind the
               band, it might be best described as an effort to transmute
