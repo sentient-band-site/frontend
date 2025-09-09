@@ -47,7 +47,7 @@ const Hamburger = () => {
         </button>
         {navbarShown && (
           <nav>
-            <div className="container bg-[#0a0a0a] mx-auto flex-col p-4 rounded-lg">
+            <div className="container mx-auto flex-col p-4 rounded-lg">
               <ul className="flex-col">
                 <li>
                   <motion.div
