@@ -2,12 +2,12 @@
 import Image from "next/image";
 import { Video } from "./Video";
 import { motion } from "framer-motion";
-import Tidal from "../public/sentient tidal shirt.png";
-import BeOnYourOwnWay from "../public/BOYW ART.jpg";
-import TheTruth from "../public/The Truth That's Behind Us.jpg";
-import RedSky from "../public/RSAM 1400.jpg";
-import SaltLight from "../public/salt and light 1400.jpg";
-import Isophase from "../public/Isophase.jpg";
+import Tidal from "../public/artwork/Tidal.png";
+import BeOnYourOwnWay from "../public/artwork/BeOnYourWay.jpg";
+import TheTruth from "../public/artwork/TheTruthThatsBehindUs.jpg";
+import RedSky from "../public/artwork/RedSkyAtMorning.jpg";
+import SaltLight from "../public/artwork/SaltAndLight.jpg";
+import Isophase from "../public/artwork/Isophase.jpg";
 
 const Releases = () => {
   return (
@@ -58,7 +58,10 @@ const Releases = () => {
       >
         <Image src={Tidal} sizes="500" alt="tidal" className="mb-10 md:w-1/2" />
         <div className="md:ml-10 md:w-1/2">
-          <Video src="" title="Tidal" />
+          <Video 
+            src="https://www.youtube.com/embed/2O5XVyO5SZc?si=LFl7IXySpIJwF50b" 
+            title="Tidal" 
+          />
           <div className="mt-10 md:mt-0">
             <h2 className="mt-5 md:mt-0 mb-5 text-xl md:text-2xl font-bold uppercase tracking-wide text-center sm:text-left">
               Tidal

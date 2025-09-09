@@ -2,7 +2,7 @@
 import { motion } from "framer-motion";
 import React from "react";
 import Image from "next/image";
-import Light from "../public/Walk Towards The Light.png";
+import Light from "../public/WalkTowrdsTheLight.png";
 
 const About = () => {
   return (

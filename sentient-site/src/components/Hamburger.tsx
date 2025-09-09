@@ -47,7 +47,7 @@ const Hamburger = () => {
         </button>
         {navbarShown && (
           <nav>
-            <div className="container bg-[#0a0a0a] mx-auto flex-col p-4 rounded-lg">
+            <div className="container mx-auto flex-col p-4 rounded-lg">
               <ul className="flex-col">
                 <li>
                   <motion.div
@@ -84,6 +84,17 @@ const Hamburger = () => {
                 </li>
                 <li>
                   <motion.div
+                    initial={{ x: -30, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{ duration: 0.4, delay: 0.4, ease: "easeOut" }}
+                  >
+                    <a href="#contact" className="" onClick={handleNavbar}>
+                      Contact
+                    </a>
+                  </motion.div>
+                </li>
+                <li>
+                  <motion.div
                     initial={{ x: -25, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
                     transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
@@ -91,17 +102,6 @@ const Hamburger = () => {
                     <a href="#store" className="" onClick={handleNavbar}>
                       {/* Store */}
                       Coming Soon
-                    </a>
-                  </motion.div>
-                </li>
-                <li>
-                  <motion.div
-                    initial={{ x: -30, opacity: 0 }}
-                    whileInView={{ x: 0, opacity: 1 }}
-                    transition={{ duration: 0.4, delay: 0.4, ease: "easeOut" }}
-                  >
-                    <a href="#contact" className="" onClick={handleNavbar}>
-                      Contact
                     </a>
                   </motion.div>
                 </li>
