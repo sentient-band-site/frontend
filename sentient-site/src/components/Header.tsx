@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import SentientLogo from "../public/Sentient-Logo.png";
 import Hamburger from "./Hamburger";
 
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -44,7 +43,7 @@ const Header = () => {
           <div>
             <a href="#home">
               <Image
-                src={SentientLogo}
+                src="/Sentient-Logo.png"
                 fill
                 sizes=""
                 style={{ objectFit: "contain" }}
@@ -62,8 +61,9 @@ const Header = () => {
           >
             <a href="#home">
               <Image
-                src={SentientLogo}
-                sizes=""
+                src="/Sentient-Logo.png"
+                width={100}
+                height={100}
                 style={{ objectFit: "contain" }}
                 alt="logo"
               />

@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 import React from "react";
 import Image from "next/image";
-import Light from "../public/WalkTowrdsTheLight.png";
 
 const About = () => {
   return (
@@ -19,8 +18,9 @@ const About = () => {
           viewport={{ once: true }}
         >
           <Image
-            src={Light}
-            sizes="500"
+            src="/WalkTowrdsTheLight.png"
+            width={500}
+            height={500}
             alt="lightpath"
             className="lg:w-full"
           />
