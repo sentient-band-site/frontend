@@ -7,7 +7,7 @@ import data from "../utils/data.json";
 const Releases = () => {
   return (
     <>
-      {data.map((single, index) => (
+      {data.releases.map((single, index) => (
         <motion.div
           key={index}
           id={index == 0 ? "new-release" : "releases"}
