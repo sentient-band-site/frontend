@@ -1,5 +1,4 @@
 "use client";
-import SentientLogo from "../public/Sentient-Logo.png";
 import Image from "next/image";
 
 const Footer = () => {
@@ -7,7 +6,7 @@ const Footer = () => {
     <>
       <div className="flex justify-center my-4">
         <Image
-          src={SentientLogo}
+          src="/Sentient-Logo.png"
           height="30"
           width="30"
           alt="logo"

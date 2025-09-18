@@ -1,11 +1,6 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import Instagram from "../public/icon/iconmonstr-instagram-14-240.png";
-import Youtube from "../public/icon/iconmonstr-youtube-9-240.png";
-import Spotify from "../public/icon/iconmonstr-spotify-4-240.png";
-import Apple from "../public/icon/iconmonstr-apple-os-4-240.png";
-
 import { useState } from "react";
 
 const Hamburger = () => {
@@ -110,10 +105,10 @@ const Hamburger = () => {
               <div className="flex justify-center pt-8">
                 <ul className="flex space-x-4">
                   <li>
-                    <a href="https://www.instagram.com/sentient.jp/">
+                    <a href="https://www.instagram.com/sentient.jp/" target="_blank">
                       <Image
                         className="bg-white rounded-full"
-                        src={Instagram}
+                        src="/icon/Instagram-Logo.png"
                         width={20}
                         height={20}
                         alt="instagram"
@@ -121,10 +116,10 @@ const Hamburger = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="https://www.youtube.com/channel/UCywdw6fckwUzAHxrzHfmMoA">
+                    <a href="https://www.youtube.com/channel/UCywdw6fckwUzAHxrzHfmMoA" target="_blank">
                       <Image
                         className="bg-white rounded-full"
-                        src={Youtube}
+                        src="/icon/Youtube-Logo.png"
                         width={20}
                         height={20}
                         alt="youtube"
@@ -132,10 +127,10 @@ const Hamburger = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="https://open.spotify.com/artist/6Cc4SibWYc1XHn07bvaXTC?si=h2vSmL58TzCjihClD0hVNw">
+                    <a href="https://open.spotify.com/artist/6Cc4SibWYc1XHn07bvaXTC?si=h2vSmL58TzCjihClD0hVNw" target="_blank">
                       <Image
                         className="bg-white rounded-full"
-                        src={Spotify}
+                        src="/icon/Spotify-Logo.png"
                         width={20}
                         height={20}
                         alt="spotify"
@@ -143,10 +138,10 @@ const Hamburger = () => {
                     </a>
                   </li>
                   <li>
-                    <a href="https://music.apple.com/us/artist/sentient/1551515794">
+                    <a href="https://music.apple.com/us/artist/sentient/1551515794" target="_blank">
                       <Image
                         className="bg-white rounded-full outline-black"
-                        src={Apple}
+                        src="/icon/Apple-Logo.png"
                         width={20}
                         height={20}
                         alt="apple"
