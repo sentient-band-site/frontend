@@ -66,7 +66,7 @@ const Hamburger = () => {
         </button>
         {navbarShown && (
           <nav>
-            <div className="container mx-auto flex-col p-4 rounded-lg">
+            <div className="container mx-auto flex-col p-4 rounded-lg bg-background">
               <ul className="flex-col">
                 {navItems.map((nav, index) => (
                   <li key={index}>
