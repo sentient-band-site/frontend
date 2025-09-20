@@ -11,36 +11,35 @@ const Releases = () => {
         <motion.div
           key={index}
           id={index == 0 ? "new-release" : "releases"}
-          initial= { index % 2 == 0 ? { x: -100, opacity: 0} : { x: 100, opacity: 0}}
-          whileInView={{x: 0, opacity: 1}}
-          transition={{duration: 0.5, ease: "easeOut"}}
-          viewport={{once: true}}
-          >
+          className="scroll-mt-16 w-screen"
+          initial={
+            index % 2 == 0 ? { x: -100, opacity: 0 } : { x: 100, opacity: 0 }
+          }
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
           <div className="flex flex-col md:flex-row justify-center m-10 md:m-32">
-            <Image
-              src={single.imageName}
-              width={500}
-              height={500}
-              alt={single.name}
-              className="lg:w-1/2 mb-10"
+            <div className="relative md:w-1/2 h-[300px] lg:h-[800px]">
+              <Image
+                src={single.imageName}
+                fill
+                alt={single.name}
+                className="object-contain"
               />
-              <div className="md:ml-10 md:w-1/2 w-full">
-                <Video
-                  src={single.video}
-                  title={single.name}
-                />
-                <div className="mt-10 md:mt-0">
-                  <h2 className="mt-5 md:mt-0 mb-5 text-xl md:text-2xl font-bold uppercase tracking-wide text-center sm:text-left">
-                    {single.name}  
-                  </h2>
-                  <p className="lg:text-lg md:mt-16">
-                    {single.desc}
-                  </p>   
-                </div>
+            </div>
+            <div className="md:ml-10 md:w-1/2">
+              <Video src={single.video} title={single.name} />
+              <div className="mt-10 md:mt-0">
+                <h2 className="mt-5 md:mt-0 mb-5 text-2xl md:text-xl font-bold uppercase tracking-wide text-center sm:text-left">
+                  {single.name}
+                </h2>
+                <p className="lg:text-xl md:mt-16">{single.desc}</p>
               </div>
+            </div>
           </div>
         </motion.div>
-        ))}
+      ))}
     </>
     // <>
     //   <div>
@@ -89,9 +88,9 @@ const Releases = () => {
     //   >
     //     <Image src={Tidal} sizes="500" alt="tidal" className="mb-10 md:w-1/2" />
     //     <div className="md:ml-10 md:w-1/2">
-    //       <Video 
-    //         src="https://www.youtube.com/embed/2O5XVyO5SZc?si=LFl7IXySpIJwF50b" 
-    //         title="Tidal" 
+    //       <Video
+    //         src="https://www.youtube.com/embed/2O5XVyO5SZc?si=LFl7IXySpIJwF50b"
+    //         title="Tidal"
     //       />
     //       <div className="mt-10 md:mt-0">
     //         <h2 className="mt-5 md:mt-0 mb-5 text-xl md:text-2xl font-bold uppercase tracking-wide text-center sm:text-left">

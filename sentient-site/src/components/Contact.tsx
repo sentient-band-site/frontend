@@ -1,7 +1,7 @@
 "use client";
 
-import React from 'react';
-import { useForm, ValidationError } from '@formspree/react';
+import React from "react";
+import { useForm, ValidationError } from "@formspree/react";
 
 const Contact = () => {
   const [state, handleSubmit] = useForm("mgvljjov");
@@ -15,12 +15,17 @@ const Contact = () => {
     );
   }
   return (
-     <div className="flex items-center justify-center min-h-screen bg-background">
-      <div className="bg-white text-black rounded-2xl shadow-2xl w-full max-w-md p-8">
-        <h1 className="font-bold text-2xl text-center mb-6 uppercase">Contact</h1>
+    <div
+      className="flex items-center justify-center min-h-screen bg-background"
+      id="contact"
+    >
+      <div className="bg-white text-black shadow-2xl w-full max-w-md p-8">
+        <h1 className="font-bold text-2xl text-center mb-6 uppercase">
+          Contact
+        </h1>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <div className="flex flex-col">
-            <label htmlFor="email" className="mb-1 font-medium">
+            <label htmlFor="email" className="mb-1 font-semibold">
               Email Address
             </label>
             <input
@@ -37,7 +42,7 @@ const Contact = () => {
             />
           </div>
           <div className="flex flex-col">
-            <label htmlFor="message" className="mb-1 font-medium">
+            <label htmlFor="message" className="mb-1 font-semibold">
               Message
             </label>
             <textarea
