@@ -16,27 +16,27 @@ const About = () => {
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
+          className="relative w-full md:w-1/2 h-[300px] lg:h-[800px]"
         >
           <Image
             src="/WalkTowrdsTheLight.png"
-            width={500}
-            height={500}
+            fill
             alt="lightpath"
-            className="lg:w-full"
+            className="object-contain"
           />
         </motion.div>
         <motion.div
-          className="md:ml-10 w-full lg:w-1/3 mt-5 md:mt-0"
+          className="md:ml-10 w-full lg:w-1/2 mt-5 md:mt-0"
           initial={{ x: 100, opacity: 0 }}
           whileInView={{ x: 0, opacity: 1 }}
           transition={{ duration: 1, ease: "easeOut" }}
           viewport={{ once: true }}
         >
           <div className="w-full">
-            <h2 className="mt-5 md:mt-0 mb-5 text-xl md:text-2xl font-bold uppercase tracking-wide text-center sm:text-left">
+            <h2 className="mt-5 md:mt-0 mb-5 text-2xl md:text-2xl font-bold uppercase tracking-wide text-center sm:text-left">
               We are Sentient
             </h2>
-            <p className="lg:text-lg md:mt-16">
+            <p className="lg:text-xl md:mt-16">
               A 5-piece band from Tokyo with modern metal, post-rock, and
               ambient music influences If there is a singular concept behind the
               band, it might be best described as an effort to transmute
