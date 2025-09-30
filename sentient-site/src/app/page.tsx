@@ -7,11 +7,15 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <>
-      <Header />
-      <About />
-      <Releases />
-      <Contact />
+      <main>
+        <Header />
+      <section className="w-screen">
+        <About />
+        <Releases />
+        <Contact />
+      </section>
       <Footer />
+      </main>
     </>
   );
 }

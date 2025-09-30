@@ -11,7 +11,7 @@ const Releases = () => {
         <motion.div
           key={index}
           id={index == 0 ? "new-release" : "releases"}
-          className="scroll-mt-16 w-screen"
+          className="scroll-mt-16 overflow-x-hidden"
           initial={
             index % 2 == 0 ? { x: -100, opacity: 0 } : { x: 100, opacity: 0 }
           }
@@ -25,7 +25,7 @@ const Releases = () => {
                 src={single.imageName}
                 fill
                 alt={single.name}
-                className="object-contain"
+                className="object-contain shadow-md shadow-gray-500/10"
               />
             </div>
             <div className="md:ml-10 md:w-1/2">

@@ -6,12 +6,12 @@ import data from "../utils/data.json";
 
 const navItems = [
   {
-    label: "New Release",
-    href: "#new-release"
-  },
-  {
     label: "About",
     href: "#about"
+  },
+  {
+    label: "New Release",
+    href: "#new-release"
   },
   {
     label: "Releases",
