@@ -6,7 +6,7 @@ import Image from "next/image";
 const About = () => {
   return (
     <>
-      <div id="home" className="scroll-mt-16 w-screen">
+      <div id="home" className="scroll-mt-16">
         <div
           className="flex flex-col md:flex-row justify-center m-10 md:m-32 scroll-mt-16"
           id="about"
