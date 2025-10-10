@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { Video } from "./Video";
 import { motion } from "framer-motion";
-import data from "../utils/data.json";
+import data from "../../utils/data.json";
 
 const Releases = () => {
   return (
