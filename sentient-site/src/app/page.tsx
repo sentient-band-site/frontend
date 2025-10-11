@@ -1,8 +1,8 @@
-import Header from "@/components/Header";
-import About from "@/components/About";
-import Releases from "@/components/Releases";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
+import Header from "@/components/layout/Header";
+import About from "@/components/sections/About";
+import Releases from "@/components/sections/Releases";
+import Contact from "@/components/sections/Contact";
+import Footer from "@/components/layout/Footer";
 
 export default function Home() {
   return (
