@@ -1,6 +1,6 @@
 "use client";
 
-import React, {createContext, useContext, useEffect, useState} from "react";
+import React, {createContext, useContext, useState} from "react";
 import { getCurrentUser, login, logout } from "@/lib/auth";
 
 type User = {
@@ -12,6 +12,7 @@ type User = {
 type AuthContextType = {
     user: User | null;
     loading: boolean;
+    checkAuth: () => Promise<void>;
     loginUser: (email: string, password: string) => Promise<void>;
     logoutUser: () => Promise<void>;
 }
@@ -19,6 +20,7 @@ type AuthContextType = {
 const AuthContext = createContext<AuthContextType> ({
     user: null,
     loading: true,
+    checkAuth: async () => {},
     loginUser: async () => {},
     logoutUser: async () => {},
 })
@@ -26,34 +28,45 @@ const AuthContext = createContext<AuthContextType> ({
 export const AuthProvider = ({children}: {children: React.ReactNode}) => {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        async function loadUser() {
-            try {
-                const data = await getCurrentUser();
-                setUser(data.user);
-            } catch {
-                setUser(null);
-            } finally {
-                setLoading(false);
-            }
+    
+    const checkAuth = async () => {
+        setLoading(true);
+        try {
+            const data = await getCurrentUser();
+            setUser(data.user);
+        } catch (err) {
+            setUser(null);
+            throw err;
+        } finally {
+            setLoading(false);
         }
-        loadUser();
-    }, []);
+    };
 
-    async function loginUser(email: string, password: string) {
-        await login(email, password);
-        const data = await getCurrentUser();
-        setUser(data.user);
+    const loginUser = async (email: string, password: string) => {
+        try {
+            const res = await login(email, password);
+            if (res?.user) {
+                setUser(res.user);
+                return;
+            }
+            await checkAuth();
+        } catch (err) {
+            throw err;
+        }
     }
 
-    async function logoutUser() {
-        await logout();
-        setUser(null);
+    const logoutUser = async () => {
+        try {
+            await logout();
+        } catch(err) {
+            console.log("Logout failed: ", err);
+        } finally {
+            setUser(null);
+        }
     }
 
     return (
-        <AuthContext.Provider value ={{user, loading, loginUser, logoutUser}}>
+        <AuthContext.Provider value ={{user, loading, checkAuth, loginUser, logoutUser}}>
             {children}
         </AuthContext.Provider>
     )
