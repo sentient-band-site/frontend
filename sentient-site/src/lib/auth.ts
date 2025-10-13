@@ -7,10 +7,16 @@ export async function login(email: string, password: string) {
     });
 }
 
-// TODO: set up in the backend
 export async function logout() {
     return apiFetch("/auth/logout", {
         method: "POST",
+    });
+}
+
+export async function register(email: string, password: string) {
+    return apiFetch("/auth/register", {
+        method: "POST",
+        body: JSON.stringify({email, password})
     });
 }
 

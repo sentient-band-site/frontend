@@ -1,7 +1,7 @@
 "use client";
 
 import React, {createContext, useContext, useState} from "react";
-import { getCurrentUser, login, logout } from "@/lib/auth";
+import { getCurrentUser, login, logout, register } from "@/lib/auth";
 
 type User = {
     id: number;
@@ -15,6 +15,7 @@ type AuthContextType = {
     checkAuth: () => Promise<void>;
     loginUser: (email: string, password: string) => Promise<void>;
     logoutUser: () => Promise<void>;
+    registerUser: (email: string, password: string) => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType> ({
@@ -23,6 +24,7 @@ const AuthContext = createContext<AuthContextType> ({
     checkAuth: async () => {},
     loginUser: async () => {},
     logoutUser: async () => {},
+    registerUser: async () => {}
 })
 
 export const AuthProvider = ({children}: {children: React.ReactNode}) => {
@@ -65,8 +67,16 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
         }
     }
 
+    const registerUser = async(email:string, password: string) => {
+        try {
+            register(email, password);
+        } catch (err) {
+            throw err;
+        }
+    }
+
     return (
-        <AuthContext.Provider value ={{user, loading, checkAuth, loginUser, logoutUser}}>
+        <AuthContext.Provider value ={{user, loading, checkAuth, loginUser, logoutUser, registerUser}}>
             {children}
         </AuthContext.Provider>
     )
