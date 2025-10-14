@@ -22,9 +22,9 @@ export default function Login() {
                 await loginUser(email, password);
             }
             router.push("/dashboard");
-        } catch (error:unknown) {
+        } catch (error: unknown) {
             if(error instanceof Error) {
-                setErr(error?.message);
+                setErr(error.message);
             } else {
                 setErr(registerFlag ? "Registration Failed" : "Login Failed");
             }
@@ -74,7 +74,7 @@ export default function Login() {
                         {registerFlag ? "Register" : "Login"}
                     </button>
                     { err && (
-                        <p className="text-red-600 text-center font-medium mt-2"> {err} </p>
+                        <p className="text-red-600 text-center font-semibold mt-2"> {err} </p>
                     )}
                 </form>
                 <div className="flex mt-6 text-center text-sm justify-center">
