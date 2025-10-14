@@ -1,6 +1,6 @@
 import Header from "@/components/layout/Header";
 import About from "@/components/sections/About";
-import Releases from "@/components/sections/Releases";
+import Releases from "@/components/layout/Releases";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
 
