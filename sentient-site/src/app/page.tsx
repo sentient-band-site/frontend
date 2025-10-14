@@ -1,8 +1,8 @@
 import Header from "@/components/layout/Header";
-import About from "@/components/sections/About";
 import Releases from "@/components/layout/Releases";
-import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
+import About from "@/components/sections/About";
+import Contact from "@/components/sections/Contact";
 
 export default function Home() {
   return (
