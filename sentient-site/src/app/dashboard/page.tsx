@@ -5,8 +5,6 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { getReleases, updateRelease, createRelease, deleteRelease } from "@/lib/releases";
-import { button, ul } from "framer-motion/client";
-import { release } from "os";
 
 export default function Dashboard() {
     const { user, logoutUser, checkAuth } = useAuth();
