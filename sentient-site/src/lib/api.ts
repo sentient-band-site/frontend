@@ -18,9 +18,9 @@ export async function apiFetch(endpoint: string, options: RequestInit = {}) {
     }
 
     if (!res.ok) {
-        const message = (data && (data.error || data.message || `Error: ${res.status}`));
-        throw new Error(message);
+        const errorMessage = data.error || data.message || `Request failed: ${res.status}`
+        throw new Error(errorMessage);
     }
 
-    return res.json();
+    return data;
 }
