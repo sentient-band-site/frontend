@@ -178,7 +178,7 @@ export default function Dashboard() {
                             name="imageName" 
                             value={formData.imageName} 
                             onChange={handleChange}
-                            placeholder="Image Location"
+                            placeholder="/artwork/imageName"
                             required
                             className="border border-[#e07a5f] rounded px-4 py-2 text-black"
                             />
