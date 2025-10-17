@@ -60,11 +60,10 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
     const logoutUser = async () => {
         try {
             await logout();
+            setUser(null);
         } catch(err) {
             console.log("Logout failed: ", err);
-        } finally {
-            setUser(null);
-        }
+        } 
     }
 
     const registerUser = async(email:string, password: string) => {

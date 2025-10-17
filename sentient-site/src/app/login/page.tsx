@@ -1,17 +1,31 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 
 
 export default function Login() {
-    const { loginUser, registerUser } = useAuth();
+    const { user, loginUser, registerUser, checkAuth } = useAuth();
     const router = useRouter();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [err, setErr] = useState<string | null>(null);
     const [registerFlag, setRegisterFlag] = useState(false);
+
+    useEffect(() => {
+        const verify = async () => {
+            try {
+                const currentUser = user ?? (await checkAuth());
+                if (currentUser) {
+                    router.replace("/dashboard");
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        };
+        verify();
+    }, [user, checkAuth, router])
 
     const submit = async (event: React.FormEvent) => {
         event.preventDefault();

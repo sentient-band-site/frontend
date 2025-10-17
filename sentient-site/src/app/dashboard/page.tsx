@@ -60,6 +60,10 @@ export default function Dashboard() {
             errorCheck(err);
         }
     }
+    async function handleLogout() {
+        await logoutUser();
+        router.push("/login");
+    }
 
     async function handleDelete(id: number) {
         if(!confirm("Are you sure?")) {
@@ -92,9 +96,16 @@ export default function Dashboard() {
     useEffect(() => {
         const loader = async () => {
             try {
-                const currentUser = user || (await checkAuth());
+                setLoading(true);
+                const currentUser = user ?? (await checkAuth());
+
                 if (!currentUser) {
                     router.push("/login");
+                    return;
+                }
+                if (currentUser.role !== "admin") {
+                    await logoutUser();
+                    router.push("/");
                     return;
                 }
                 await resetReleases();
@@ -105,16 +116,18 @@ export default function Dashboard() {
             }
         };
         loader();
-    }, [user, router, checkAuth]);
+    }, [user, router, logoutUser, checkAuth]);
 
     if(loading) return <div>Loading Dashboard</div>
-    if(error) return <div>Error: {error}</div>
+    if(error) {
+        router.push("/login");
+    }
 
     return (
         <div>
             <div>
                 <h1>Dashboard</h1>
-                <button onClick={logoutUser}>
+                <button onClick={handleLogout}>
                     Logout
                 </button>
             </div>

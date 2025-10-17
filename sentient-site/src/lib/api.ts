@@ -10,10 +10,16 @@ export async function apiFetch(endpoint: string, options: RequestInit = {}) {
         ...options,
     });
 
-    const data = await res.json();
+    let data;
+    try {
+        data = await res.json();
+    } catch {
+        data = null;
+    }
 
     if (!res.ok) {
-        throw new Error(data?.message || "Request Failed");
+        const errorMessage = data.error || data.message || `Request failed: ${res.status}`
+        throw new Error(errorMessage);
     }
 
     return data;
