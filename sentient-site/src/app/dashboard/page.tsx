@@ -124,88 +124,97 @@ export default function Dashboard() {
     }
 
     return (
-        <div>
-            <div>
-                <h1>Dashboard</h1>
-                <button onClick={handleLogout}>
-                    Logout
-                </button>
-            </div>
-            <div>
-                <h2>Releases</h2>
-                {releases.length === 0 ? (
-                    <div>No Releases found</div>
-                ) : (
-                    <ul>
-                        {releases.map((release) => (
-                            <li key={release.id}>
-                                <div>
-                                    <p>{release.name}</p>
-                                    <p>{release.desc}</p>
-                                </div>
-                                <div>
-                                    <button onClick={() => {handleEdit(release)}}>
-                                        Edit
-                                    </button>
-                                    <button onClick={() => {handleDelete(release.id)}}>
-                                        Delete
-                                    </button>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
-                )}
-            </div>
-            {formFlag ? (
-
-                <form onSubmit={handleSubmit}>
-                    <h2>
-                        { editingId ? "Edit Release" : "Create Release" }
-                    </h2>
-                    <input 
-                        name="name" 
-                        value={formData.name} 
-                        onChange={handleChange}
-                        placeholder="Name"
-                        required
-                    />
-                    <input 
-                        name="imageName" 
-                        value={formData.imageName} 
-                        onChange={handleChange}
-                        placeholder="Image Location"
-                        required
-                    />
-                    <input 
-                        name="video" 
-                        value={formData.video} 
-                        onChange={handleChange}
-                        placeholder="Link"
-                        required
-                    />
-                    <textarea 
-                        name="desc" 
-                        value={formData.desc} 
-                        onChange={handleChange}
-                        placeholder="Description"
-                        required
-                    />
-                    {error && <div> {error} </div>}
-                    <div>
-                        <button type="submit">
-                            {editingId ? "Update" : "Create"}
-                        </button>
-                        <button type="button"
-                            onClick={() => {
-                                setFormFlag(false);
-                                setEditingId(null);
-                                setFormData({name:"", imageName:"", video:"", desc:""});
-                            }}>
-                                Cancel
+        <main>
+            <div className="min-h-screen p-8">
+                <div className="flex justify-between items-center mb-4">
+                    <h1 className="text-2xl font-bold">Dashboard</h1>
+                    <button 
+                        onClick={handleLogout}
+                        className="m-4 px-4 py-2 bg-[#d75a4a] text-white rounded font-semibold hover:bg-[#b94a3d] transition"
+                    >
+                        Logout
+                    </button>
+                </div>
+                <div className="">
+                    <h2 className="text-xl font-semibold mb-4">Releases</h2>
+                    {releases.length === 0 ? (
+                        <div>No Releases found</div>
+                    ) : (
+                        <ul className="divide-y divide-gray-200">
+                            {releases.map((release) => (
+                                <li key={release.id} className="flex justify-between py-2 items-center">
+                                    <div>
+                                        <p className="font-medium">{release.name}</p>
+                                        <p className="text-sm">{release.desc}</p>
+                                    </div>
+                                    <div className="flex gap-4">
+                                        <button onClick={() => {handleEdit(release)}} className="hover:underline">
+                                            Edit
+                                        </button>
+                                        <button onClick={() => {handleDelete(release.id)}} className="text-red-600 hover:underline">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
+                {formFlag ? (
+                    
+                    <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+                        <h2 className="text-lg font-semibold">
+                            { editingId ? "Edit Release" : "Create Release" }
+                        </h2>
+                        <input 
+                            name="name" 
+                            value={formData.name} 
+                            onChange={handleChange}
+                            placeholder="Name"
+                            required
+                            className="border border-[#e07a5f] rounded px-4 py-2 text-black"
+                            />
+                        <input 
+                            name="imageName" 
+                            value={formData.imageName} 
+                            onChange={handleChange}
+                            placeholder="Image Location"
+                            required
+                            className="border border-[#e07a5f] rounded px-4 py-2 text-black"
+                            />
+                        <input 
+                            name="video" 
+                            value={formData.video} 
+                            onChange={handleChange}
+                            placeholder="Link"
+                            required
+                            className="border border-[#e07a5f] rounded px-4 py-2 text-black"
+                            />
+                        <textarea 
+                            name="desc" 
+                            value={formData.desc} 
+                            onChange={handleChange}
+                            placeholder="Description"
+                            required
+                            className="border border-[#e07a5f] rounded px-4 py-2 text-black"
+                            />
+                        {error && <div className="text-red-600 text-sm"> {error} </div>}
+                        <div>
+                            <button type="submit" className="m-4 px-4 py-2 bg-[#d75a4a] text-white rounded font-semibold hover:bg-[#b94a3d] transition">
+                                {editingId ? "Update" : "Create"}
                             </button>
-                    </div>
-                </form>
-            ):<button onClick={() => setFormFlag(true)}>Create</button>}
-        </div>
+                            <button type="button" className="m-4 px-4 py-2 bg-[#d75a4a] text-white rounded font-semibold hover:bg-[#b94a3d] transition"
+                                onClick={() => {
+                                    setFormFlag(false);
+                                    setEditingId(null);
+                                    setFormData({name:"", imageName:"", video:"", desc:""});
+                                }}>
+                                    Cancel
+                                </button>
+                        </div>
+                    </form>
+                ):<button onClick={() => setFormFlag(true)} className="px-4 py-2 bg-[#d75a4a] text-white rounded font-semibold hover:bg-[#b94a3d] transition">Create</button>}
+            </div>
+        </main>
     )
 }
