@@ -2,12 +2,40 @@
 import Image from "next/image";
 import { Video } from "../sections/Video";
 import { motion } from "framer-motion";
-import data from "../../utils/data.json";
+// import data from "../../utils/data.json";
+import { getReleases } from "@/lib/releases";
+import type { Releases } from "@/interfaces/interfaces";
+import { useEffect, useState } from "react";
 
 const Releases = () => {
+  const [releases, setReleases] = useState<Releases[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    async function getAllReleases() {
+      try {
+        const data = await getReleases();
+        setReleases(data);
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          setError(err.message)
+        } else {
+          setError("Failed to fetch");
+        } 
+      } finally {
+          setLoading(false);
+      }
+    }
+    getAllReleases();
+  }, [])
+
+  if (loading) return <p className="text-center mt-10">Loading...</p>
+  if(error) return <p className="text-center text-red-500 mt-10">{error}</p>
+
   return (
     <>
-      {data.releases.map((single, index) => (
+      {releases.map((single, index) => (
         <motion.div
           key={index}
           id={index == 0 ? "new-release" : "releases"}
