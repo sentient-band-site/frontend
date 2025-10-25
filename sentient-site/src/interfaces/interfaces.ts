@@ -5,3 +5,9 @@ export interface Releases {
     video: string;
     desc: string;
 }
+
+export interface User {
+    id: number;
+    email: string;
+    role: string;
+}
