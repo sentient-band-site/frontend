@@ -1,18 +1,19 @@
 "use client";
 
-import React, {createContext, useContext, useState} from "react";
+import React, {createContext, useContext, useState, useCallback} from "react";
 import { getCurrentUser, login, logout, register } from "@/lib/auth";
+import { User } from "@/interfaces/interfaces";
 
-type User = {
-    id: number;
-    email: string;
-    role: string;
-}
+// type User = {
+//     id: number;
+//     email: string;
+//     role: string;
+// }
 
 type AuthContextType = {
     user: User | null;
     loading: boolean;
-    checkAuth: () => Promise<void>;
+    checkAuth: () => Promise<User | null>;
     loginUser: (email: string, password: string) => Promise<void>;
     logoutUser: () => Promise<void>;
     registerUser: (email: string, password: string) => Promise<void>;
@@ -21,7 +22,7 @@ type AuthContextType = {
 const AuthContext = createContext<AuthContextType> ({
     user: null,
     loading: true,
-    checkAuth: async () => {},
+    checkAuth: async () => null,
     loginUser: async () => {},
     logoutUser: async () => {},
     registerUser: async () => {}
@@ -31,18 +32,20 @@ export const AuthProvider = ({children}: {children: React.ReactNode}) => {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
     
-    const checkAuth = async () => {
+    const checkAuth = useCallback(async () => {
         setLoading(true);
         try {
             const data = await getCurrentUser();
             setUser(data.user);
+            return data.user;
         } catch (err) {
+            console.error("Auth check failed:", err);
             setUser(null);
-            throw err;
+            return null
         } finally {
             setLoading(false);
         }
-    };
+    }, []);
 
     const loginUser = async (email: string, password: string) => {
         try {

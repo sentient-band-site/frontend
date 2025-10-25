@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
+import { User } from "@/interfaces/interfaces";
 
 
 export default function Login() {
@@ -16,7 +17,12 @@ export default function Login() {
     useEffect(() => {
         const verify = async () => {
             try {
-                const currentUser = user ?? (await checkAuth());
+                if(user) {
+                    router.replace("/dashboard");
+                    return;
+                }
+
+                const currentUser: User | null = await checkAuth();
                 if (currentUser) {
                     router.replace("/dashboard");
                 }
@@ -25,7 +31,13 @@ export default function Login() {
             }
         };
         verify();
-    }, [user, checkAuth, router])
+    }, [user, checkAuth, router]);
+
+    useEffect(() => {
+        if(user) {
+            router.replace("/dashboard");
+        }
+    }, [user, router])
 
     const submit = async (event: React.FormEvent) => {
         event.preventDefault();
