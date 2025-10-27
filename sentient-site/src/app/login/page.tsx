@@ -9,8 +9,10 @@ import { User } from "@/interfaces/interfaces";
 export default function Login() {
     const { user, loginUser, registerUser, checkAuth } = useAuth();
     const router = useRouter();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
     const [err, setErr] = useState<string | null>(null);
     const [registerFlag, setRegisterFlag] = useState(false);
 
@@ -41,6 +43,13 @@ export default function Login() {
 
     const submit = async (event: React.FormEvent) => {
         event.preventDefault();
+        setErr(null);
+
+        if(registerFlag && password !== confirmPassword) {
+            setErr("Passwords do not match");
+            return;
+        }
+
         try {
             if(registerFlag) {
                 await registerUser(email, password);
@@ -78,21 +87,56 @@ export default function Login() {
                                 placeholder="Email"
                                 required
                                 className="border border-gray-300 rounded-sm px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e07a5f]"
-                                />
-                            <label 
-                                htmlFor="password" 
-                                className="mb-1 font-semibold"
-                            >
-                                Password
-                            </label>
-                            <input 
-                                type="password" 
-                                value={password} 
-                                onChange={(passIn) => {setPassword(passIn.target.value)}}
-                                placeholder="Password" 
-                                required
-                                className="border border-gray-300 rounded-sm px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e07a5f]"
                             />
+                            { registerFlag ? (
+                                <>
+                                    <label 
+                                        htmlFor="password" 
+                                        className="mb-1 font-semibold"
+                                    >
+                                    Password
+                                    </label>
+                                    <input 
+                                        type="password" 
+                                        value={password} 
+                                        onChange={(passIn) => {setPassword(passIn.target.value)}}
+                                        placeholder="Password" 
+                                        required
+                                        className="border border-gray-300 rounded-sm px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e07a5f]"
+                                        />
+                                    <label
+                                        htmlFor="password"
+                                        className="mb-1 font-semibold"
+                                    >Re-type Password</label>
+                                    <input 
+                                        type="password" 
+                                        id="confirmPassword" 
+                                        value={confirmPassword}
+                                        onChange={(passIn) => {setConfirmPassword(passIn.target.value)}}
+                                        placeholder="Re-type Password" 
+                                        required
+                                        className="border border-gray-300 rounded-sm px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e07a5f]"
+                                        />
+                                </>
+                            ) : (
+                                <>
+                                    <label 
+                                        htmlFor="password" 
+                                        className="mb-1 font-semibold"
+                                        >
+                                        Password
+                                    </label>
+                                    <input 
+                                        type="password" 
+                                        value={password} 
+                                        onChange={(passIn) => {setPassword(passIn.target.value)}}
+                                        placeholder="Password" 
+                                        required
+                                        className="border border-gray-300 rounded-sm px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[#e07a5f]"
+                                    />
+                                </>
+                            )}
+                            
                         </div>
                         <button 
                             type="submit"
