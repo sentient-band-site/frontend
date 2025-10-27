@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <main>
         <Header />
-      <section className="w-screen">
+      <section className="w-screen m-2">
         <About />
         <Releases />
         <Contact />
