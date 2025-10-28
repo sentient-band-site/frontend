@@ -37,26 +37,26 @@
             "desc": "Cascading is one of the first songs we ever wrote for Salt and Light and for that, will hold a special place in our hearts."
         }
 ],
-"socials" : [
-    {
-        "name": "instagram",
-        "link" : "https://www.instagram.com/sentient.jp/",
-        "src" : "/icon/Instagram-Logo.png"
-    },
-    {
-        "name": "youtube",
-        "link" : "https://www.youtube.com/channel/UCywdw6fckwUzAHxrzHfmMoA",
-        "src": "/icon/Youtube-Logo.png"
-    },
-    {
-        "name": "spotify",
-        "link" : "https://open.spotify.com/artist/6Cc4SibWYc1XHn07bvaXTC?si=h2vSmL58TzCjihClD0hVNw",
-        "src" : "/icon/Spotify-Logo.png"
-    },
-    {
-        "name": "apple",
-        "link" : "https://music.apple.com/us/artist/sentient/1551515794",
-        "src": "/icon/Apple-Logo.png"
-    }
+    "socials" : [
+        {
+            "name": "instagram",
+            "link" : "https://www.instagram.com/sentient.jp/",
+            "src" : "/icon/Instagram-Logo.png"
+        },
+        {
+            "name": "youtube",
+            "link" : "https://www.youtube.com/channel/UCywdw6fckwUzAHxrzHfmMoA",
+            "src": "/icon/Youtube-Logo.png"
+        },
+        {
+            "name": "spotify",
+            "link" : "https://open.spotify.com/artist/6Cc4SibWYc1XHn07bvaXTC?si=h2vSmL58TzCjihClD0hVNw",
+            "src" : "/icon/Spotify-Logo.png"
+        },
+        {
+            "name": "apple",
+            "link" : "https://music.apple.com/us/artist/sentient/1551515794",
+            "src": "/icon/Apple-Logo.png"
+        }
 
-]}
+    ]}
