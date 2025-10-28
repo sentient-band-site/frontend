@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import { getReleases } from "@/lib/releases";
 import type { Releases } from "@/interfaces/interfaces";
 import { useEffect, useState } from "react";
+import Loader from "../sections/Loader";
 
 const Releases = () => {
   const [releases, setReleases] = useState<Releases[]>([]);
@@ -30,7 +31,7 @@ const Releases = () => {
     getAllReleases();
   }, [])
 
-  if (loading) return <p className="text-center mt-10">Loading...</p>
+  if (loading) return <Loader message="Loading..."/>
   if(error) return <p className="text-center text-red-500 mt-10">{error}</p>
 
   return (
