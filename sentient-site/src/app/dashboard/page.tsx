@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { getReleases, updateRelease, createRelease, deleteRelease } from "@/lib/releases";
+import Loader from "@/components/sections/Loader";
 
 export default function Dashboard() {
     const { user, logoutUser, checkAuth } = useAuth();
@@ -118,7 +119,7 @@ export default function Dashboard() {
         loader();
     }, [user, router, logoutUser, checkAuth]);
 
-    if(loading) return <div>Loading Dashboard</div>
+    if(loading) return <Loader message="Loading..."/>
     if(error) {
         router.push("/login");
     }

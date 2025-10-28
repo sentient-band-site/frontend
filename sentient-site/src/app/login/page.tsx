@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/AuthContext";
 import { User } from "@/interfaces/interfaces";
+import Loader from "@/components/sections/Loader";
 
 
 export default function Login() {
@@ -15,6 +16,7 @@ export default function Login() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [err, setErr] = useState<string | null>(null);
     const [registerFlag, setRegisterFlag] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         const verify = async () => {
@@ -44,9 +46,11 @@ export default function Login() {
     const submit = async (event: React.FormEvent) => {
         event.preventDefault();
         setErr(null);
+        setLoading(true);
 
         if(registerFlag && password !== confirmPassword) {
             setErr("Passwords do not match");
+            setLoading(false);
             return;
         }
 
@@ -63,8 +67,19 @@ export default function Login() {
             } else {
                 setErr(registerFlag ? "Registration Failed" : "Login Failed");
             }
+        } finally {
+            setLoading(false);
         }
     };
+
+    let buttonDisplay;
+
+    if(loading) {
+        buttonDisplay = <Loader message="Loading..."/>;
+    } else {
+        buttonDisplay = registerFlag ? "Register" : "Login";
+    }
+
 
     return (
         <main>
@@ -140,9 +155,11 @@ export default function Login() {
                         </div>
                         <button 
                             type="submit"
-                            className="mt-4 bg-[#d75a4a] text-white py-2 rounded-lg font-semibold hover:bg-[#b94a3d] transition disabled:bg-gray-400"
+                            disabled={loading}
+                            className={`mt-4 text-white py-2 rounded-lg font-semibold transition ${loading ? "bg-gray-500 cursor-not-allowed": "bg-[#d75a4a] hover:bg-[#b94a3d]"}`}
                         >
-                            {registerFlag ? "Register" : "Login"}
+                            {buttonDisplay}
+                                
                         </button>
                         { err && (
                             <p className="text-red-600 text-center font-semibold mt-2"> {err} </p>
