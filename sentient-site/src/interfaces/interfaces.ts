@@ -1,5 +1,5 @@
 export interface Releases {
-    id: number;
+    id?: number;
     name: string;
     imageName: string;
     video: string;

@@ -84,7 +84,7 @@ export default function Dashboard() {
     }
 
     async function handleEdit(release: Releases) {
-        setEditingId(release.id);
+        setEditingId(release.id!);
         setFormData({
             name: release.name,
             imageName: release.imageName,
@@ -162,7 +162,7 @@ export default function Dashboard() {
                                             <button onClick={() => {handleEdit(release)}} className="hover:underline uppercase font-bold tracking-tighter">
                                                 Edit
                                             </button>
-                                            <button onClick={() => {handleDelete(release.id)}} className="text-[#b94a3d] hover:underline uppercase font-bold tracking-tighter">
+                                            <button onClick={() => {handleDelete(release.id!)}} className="text-[#b94a3d] hover:underline uppercase font-bold tracking-tighter">
                                                 Delete
                                             </button>
                                         </div>

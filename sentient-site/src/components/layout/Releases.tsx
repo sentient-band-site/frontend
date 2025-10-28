@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { Video } from "../sections/Video";
 import { motion } from "framer-motion";
-// import data from "../../utils/data.json";
+import fallbackData from "../../utils/data.json";
 import { getReleases } from "@/lib/releases";
 import type { Releases } from "@/interfaces/interfaces";
 import { useEffect, useState } from "react";
@@ -14,10 +14,26 @@ const Releases = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    let timeoutTriggered = false;
     async function getAllReleases() {
       try {
+        const timeout = setTimeout(() => {
+          timeoutTriggered = true;
+          setReleases(fallbackData.releases);
+          setLoading(false);
+          console.warn("Timeout exceeded");
+        }, 5000)
+
         const data = await getReleases();
-        setReleases(data);
+
+        clearTimeout(timeout);
+        if(!timeoutTriggered) {
+          setReleases(data);
+        } else {
+          console.log("Replacing data with live data");
+          setReleases(data);
+        }
+
       } catch (err: unknown) {
         if (err instanceof Error) {
           setError(err.message)
