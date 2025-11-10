@@ -22,7 +22,7 @@ export async function uploadImage(file: File) {
 }
 
 export async function deleteImage(fileName: string) {
-    return apiFetch(`images/upload/${fileName}`, {
+    return apiFetch(`/images/upload/${fileName}`, {
         method: "DELETE"
     });
 }

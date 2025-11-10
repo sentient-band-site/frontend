@@ -1,12 +1,17 @@
 "use client";
+
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+
+import fallbackData from "../../utils/data.json";
+
+import Loader from "../sections/Loader";
 import Image from "next/image";
 import { Video } from "../sections/Video";
-import { motion } from "framer-motion";
-import fallbackData from "../../utils/data.json";
 import { getReleases } from "@/lib/releases";
+import { getImage } from "@/lib/images";
+
 import type { Releases } from "@/interfaces/interfaces";
-import { useEffect, useState } from "react";
-import Loader from "../sections/Loader";
 
 const Releases = () => {
   const [releases, setReleases] = useState<Releases[]>([]);
@@ -25,13 +30,28 @@ const Releases = () => {
         }, 5000)
 
         const data = await getReleases();
+        console.log("data:", data)
+
+        const releaseUrls = await Promise.all(
+          data.map(async (release: Releases) => {
+            try {
+              const image = await getImage(release.imageName.slice(9));
+              return {...release, imageUrl: image.url}
+            } catch (err: unknown) {
+              if(err instanceof Error) {
+                return release;
+              }
+            }
+          })
+        )
 
         clearTimeout(timeout);
+
         if(!timeoutTriggered) {
-          setReleases(data);
+          setReleases(releaseUrls);
         } else {
           console.log("Replacing data with live data");
-          setReleases(data);
+          setReleases(releaseUrls);
         }
 
       } catch (err: unknown) {
@@ -67,7 +87,7 @@ const Releases = () => {
           <div className="flex flex-col md:flex-row justify-center m-10 md:m-32">
             <div className="relative md:w-1/2 h-[300px] lg:h-[800px]">
                 <Image
-                  src={single.imageName}
+                  src={single.imageUrl || single.imageName}
                   fill
                   alt={single.name}
                   className="object-contain"

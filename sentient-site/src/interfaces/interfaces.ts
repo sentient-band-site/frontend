@@ -4,6 +4,7 @@ export interface Releases {
     imageName: string;
     video: string;
     desc: string;
+    imageUrl?: string;
 }
 
 export interface User {
