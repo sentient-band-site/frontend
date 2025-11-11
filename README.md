@@ -17,9 +17,9 @@ A full-stack band website for the band **Sentient**, built with **Next.js**, **T
 
 ## Tech Stack
 
-**Frontend Framework** 
-[Next.js](https://nextjs.org/)
-![Next.js](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+###**Frontend Framework** 
+###[Next.js](https://nextjs.org/)
+###![Next.js](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
 **Language**
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 [TypeScript](https://www.typescriptlang.org/)
