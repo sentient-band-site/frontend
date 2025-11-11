@@ -18,20 +18,16 @@ A full-stack band website for the band **Sentient**, built with **Next.js**, **T
 ## Tech Stack
 
 ### **Frontend Framework** 
-### [Next.js](https://nextjs.org/)
-### ![Next.js](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
-**Language**
-![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
-[TypeScript](https://www.typescriptlang.org/)
-**Styling**
-![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
-[Tailwind CSS](https://tailwindcss.com/)
-**Animations** 
-![Framer Motion](https://img.shields.io/badge/framer_motion-ffca28?style=for-the-badge&logo=framer&logoColor=%23ffffff&color=%237178f6)
-[Framer Motion](https://www.framer.com/motion/)
-**Media Handling** | [Supabase Storage](https://supabase.com/docs/guides/storage)
-**Authentication** | JWT (handled via backend API)
-**Build Tool** | Vite (if applicable) / Next Build
+#### ![Next.js](https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+### **Language**
+#### ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+### **Styling**
+#### ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+### **Animations** 
+#### ![Framer Motion](https://img.shields.io/badge/framer_motion-ffca28?style=for-the-badge&logo=framer&logoColor=%23ffffff&color=%237178f6)
+### **Media Handling** | [Supabase Storage](https://supabase.com/docs/guides/storage)
+### **Authentication** | JWT (handled via backend API)
+### **Build Tool** | Next Build
 
 ## Project Setup
 
