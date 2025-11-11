@@ -19,7 +19,7 @@ A full-stack band website for the band **Sentient**, built with **Next.js**, **T
 
 - **Frontend Framework** | [Next.js](https://nextjs.org/)
 - **Language** | [TypeScript](https://www.typescriptlang.org/)
-- **Styling** | ![Tailwind CSS](https://tailwindcss.com/)(https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+- **Styling** | ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)[Tailwind CSS](https://tailwindcss.com/)
 - **Animations** | [Framer Motion](https://www.framer.com/motion/)
 - **Media Handling** | [Supabase Storage](https://supabase.com/docs/guides/storage)
 - **Authentication** | JWT (handled via backend API)
