@@ -18,8 +18,12 @@ A full-stack band website for the band **Sentient**, built with **Next.js**, **T
 ## Tech Stack
 
 - **Frontend Framework** | [Next.js](https://nextjs.org/)
-- **Language** | [TypeScript](https://www.typescriptlang.org/)
-- **Styling** | ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)[Tailwind CSS](https://tailwindcss.com/)
+- **Language** |
+- ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+- [TypeScript](https://www.typescriptlang.org/)
+- **Styling** |
+- ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+- [Tailwind CSS](https://tailwindcss.com/)
 - **Animations** | [Framer Motion](https://www.framer.com/motion/)
 - **Media Handling** | [Supabase Storage](https://supabase.com/docs/guides/storage)
 - **Authentication** | JWT (handled via backend API)
