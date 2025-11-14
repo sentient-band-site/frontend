@@ -72,7 +72,7 @@ export default function Dashboard() {
             if(selectedFile) {
                 finalImageName = generateImageFilename(name, selectedFile);
 
-                uploadImage(selectedFile);
+                await uploadImage(selectedFile);
             }
 
             if(editingId) {
@@ -131,7 +131,7 @@ export default function Dashboard() {
         const releasesWithUrls = await Promise.all(
             data.map(async (release: Releases) => {
                 try {
-                    const image = await getImageUrl(release.imageName)
+                    const image = await getImageUrl(release.imageName.slice(9));
                     return {
                         ...release,
                         imageUrl: image
