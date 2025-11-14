@@ -30,6 +30,8 @@ A full-stack band website for the band **Sentient**, built with **Next.js**, **T
 ### **Authentication** | JWT (handled via backend API)
 ### **Build Tool** | Next Build
 
+---
+
 ## Project Setup
 
 ### Prerequisites
