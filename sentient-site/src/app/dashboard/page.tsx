@@ -6,10 +6,13 @@ import { useEffect, useState } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { getReleases, updateRelease, createRelease, deleteRelease } from "@/lib/releases";
 import Loader from "@/components/sections/Loader";
+import { getImageUrl, uploadImage, deleteImage } from "@/lib/images";
+import Image from "next/image";
 
 export default function Dashboard() {
     const { user, logoutUser, checkAuth } = useAuth();
     const router = useRouter();
+
     const [releases, setReleases ] = useState<Releases[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null)
@@ -18,10 +21,12 @@ export default function Dashboard() {
 
     const [formData, setFormData] = useState({
         name: "",
-        imageName: "",
         video: "",
         desc: "",
     })
+
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
     function errorCheck(err: unknown) {
         if(err instanceof Error) {
@@ -35,42 +40,84 @@ export default function Dashboard() {
         setFormData({...formData, [e.target.name]: e.target.value});
     }
 
+    function handleImageSelect(e: React.ChangeEvent<HTMLInputElement>) {
+        const file = e.target.files?.[0];
+        if(!file) {
+            return
+        };
+
+        setSelectedFile(file);
+        setPreviewUrl(URL.createObjectURL(file));
+    }
+
+    function generateImageFilename(name: string, file: File) {
+        const camelCaseName = name.split(" ").map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase()).join("");
+        const extension = file.name.split(".").pop();
+
+        return`${camelCaseName}.${extension}`;
+    }
+
     async function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        const {name, imageName, video, desc} = formData;
+        const {name, video, desc} = formData;
 
-        if (!name || !imageName || !video || !desc ) {
+        if (!name || !video || !desc || selectedFile == null) {
             setError("Please fill out all fields");
             return;
         }
 
         try {
+            let finalImageName = "";
+
+            if(selectedFile) {
+                finalImageName = generateImageFilename(name, selectedFile);
+
+                uploadImage(selectedFile);
+            }
+
             if(editingId) {
-                await updateRelease(editingId, {id: editingId, ...formData});
+                await updateRelease(editingId, {
+                    id: editingId,
+                    name,
+                    imageName: finalImageName,
+                    video,
+                    desc
+                });
                 alert("Release Updated");
             } else {
-                await createRelease(formData);
+                await createRelease({
+                    name, 
+                    imageName: finalImageName, 
+                    video, 
+                    desc
+                });
                 alert("Release Created");
             }
 
+            setSelectedFile(null);
+            setPreviewUrl(null);
             setFormFlag(false);
-            setFormData({name: "", imageName: "", video: "", desc: ""});
+            setEditingId(null);
+            setFormData({name: "", video: "", desc: ""});
+
             await resetReleases();
 
         } catch (err: unknown) {
             errorCheck(err);
         }
     }
+
     async function handleLogout() {
         await logoutUser();
         router.push("/login");
     }
 
-    async function handleDelete(id: number) {
+    async function handleDelete(id: number, image: string) {
         if(!confirm("Are you sure?")) {
             return;
         }
         try {
+            await deleteImage(image);
             await deleteRelease(id);
             alert("Deleted");
             await resetReleases();
@@ -80,17 +127,33 @@ export default function Dashboard() {
     }
     async function resetReleases() {
         const data = await getReleases();
-        setReleases(data);
+
+        const releasesWithUrls = await Promise.all(
+            data.map(async (release: Releases) => {
+                try {
+                    const image = await getImageUrl(release.imageName)
+                    return {
+                        ...release,
+                        imageUrl: image
+                    }
+                } catch {
+                    return release;
+                }
+            })
+        )
+
+        setReleases(releasesWithUrls);
     }
 
     async function handleEdit(release: Releases) {
         setEditingId(release.id!);
         setFormData({
             name: release.name,
-            imageName: release.imageName,
             video: release.video,
             desc: release.desc,
         }); 
+
+        setPreviewUrl(`/images/${release.imageName}`);
         setFormFlag(true);
     }
 
@@ -99,7 +162,6 @@ export default function Dashboard() {
             try {
                 setLoading(true);
                 const currentUser = user ?? (await checkAuth());
-
                 if (!currentUser) {
                     router.push("/login");
                     return;
@@ -155,14 +217,29 @@ export default function Dashboard() {
                                 {releases.map((release) => (
                                     <li key={release.id} className="flex justify-between py-2 items-center hover:bg-white hover:text-black transition-colors px-4">
                                         <div>
+                                            {release.imageUrl && (
+                                                <Image 
+                                                    src={release.imageUrl}
+                                                    alt={release.name}
+                                                    width={32}
+                                                    height={32}
+                                                    className="object-cover rounded"
+                                                />
+                                            )}
                                             <p className="font-medium text-lg">{release.name}</p>
                                             <p className="text-sm">{release.desc}</p>
                                         </div>
                                         <div className="flex gap-4">
-                                            <button onClick={() => {handleEdit(release)}} className="hover:underline uppercase font-bold tracking-tighter">
+                                            <button 
+                                                onClick={() => {handleEdit(release)}} 
+                                                className="hover:underline uppercase font-bold tracking-tighter"
+                                            >
                                                 Edit
                                             </button>
-                                            <button onClick={() => {handleDelete(release.id!)}} className="text-[#b94a3d] hover:underline uppercase font-bold tracking-tighter">
+                                            <button 
+                                                onClick={() => {handleDelete(release.id!, release.imageName)}} 
+                                                className="text-[#b94a3d] hover:underline uppercase font-bold tracking-tighter"
+                                            >
                                                 Delete
                                             </button>
                                         </div>
@@ -172,6 +249,7 @@ export default function Dashboard() {
                         )}
                     </section>
                 </div>
+
                 {formFlag && (
                     <form 
                         onSubmit={handleSubmit} 
@@ -185,14 +263,6 @@ export default function Dashboard() {
                             value={formData.name} 
                             onChange={handleChange}
                             placeholder="Name"
-                            required
-                            className="border border-[#e07a5f] rounded px-4 py-2 text-black placeholder-gray-400 focus-[#d75a4a] outline-none transition"
-                            />
-                        <input 
-                            name="imageName" 
-                            value={formData.imageName} 
-                            onChange={handleChange}
-                            placeholder="/artwork/imageName"
                             required
                             className="border border-[#e07a5f] rounded px-4 py-2 text-black placeholder-gray-400 focus-[#d75a4a] outline-none transition"
                             />
@@ -212,7 +282,23 @@ export default function Dashboard() {
                             required
                             className="border border-[#e07a5f] rounded px-4 py-2 text-black placeholder-gray-400 focus-[#d75a4a] outline-none transition"
                             />
+                        <input 
+                            type="file" 
+                            accept="artwork/*"
+                            onChange={handleImageSelect}
+                            required
+                            className="border border-[#e07a5f] rounded px-4 py-2 text-black placeholder-gray-400 focus-[#d75a4a] outline-none transition"
+                        />
+                        {previewUrl && (        
+                            <Image
+                                src={previewUrl}
+                                alt="Preview"
+                                className="mt-2 w-32 h-32 object-cover border"
+                            />
+                        )}
+
                         {error && <div className="text-red-600 text-sm"> {error} </div>}
+                        
                         <div className="flex gap-4 justify-center mt-4">
                             <button 
                                 type="submit" 
@@ -225,7 +311,9 @@ export default function Dashboard() {
                                 onClick={() => {
                                     setFormFlag(false);
                                     setEditingId(null);
-                                    setFormData({name:"", imageName:"", video:"", desc:""});
+                                    setFormData({name:"", video:"", desc:""});
+                                    setSelectedFile(null);
+                                    setPreviewUrl(null);
                                 }}
                                 className="px-4 py-2 bg-[#d75a4a] text-white rounded font-semibold hover:bg-[#b94a3d] transition"
                             >

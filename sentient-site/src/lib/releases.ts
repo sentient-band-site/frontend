@@ -2,6 +2,7 @@ import { apiFetch } from "./api";
 import type { Releases } from "@/interfaces/interfaces";
 
 type CreateReleaseData = Omit<Releases, "id">
+
 function validateData(data: Releases|CreateReleaseData) {
     const requiredKeys = ["name", "imageName", "video", "desc"] as const
     for (const key of requiredKeys) {
