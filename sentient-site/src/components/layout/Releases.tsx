@@ -35,7 +35,7 @@ const Releases = () => {
         const releaseUrls = await Promise.all(
           data.map(async (release: Releases) => {
             try {
-              const image = await getImage(release.imageName.slice(9));
+              const image = await getImage(release.imageName);
               return {...release, imageUrl: image.url}
             } catch (err: unknown) {
               if(err instanceof Error) {
@@ -72,7 +72,7 @@ const Releases = () => {
 
   return (
     <>
-      {releases.map((single, index) => (
+      {[...releases].reverse().map((single, index) => (
         <motion.div
           key={index}
           id={index == 0 ? "new-release" : "releases"}
