@@ -18,6 +18,7 @@ export default function Dashboard() {
     const [error, setError] = useState<string | null>(null)
     const [formFlag, setFormFlag] = useState(false);
     const [editingId, setEditingId] = useState<number | null>(null)
+    const [editingImageName, setEditingImageName] = useState<string | null>(null);
 
     const [formData, setFormData] = useState({
         name: "",
@@ -61,13 +62,13 @@ export default function Dashboard() {
         e.preventDefault();
         const {name, video, desc} = formData;
 
-        if (!name || !video || !desc || selectedFile == null) {
+        if (!name || !video || !desc) {
             setError("Please fill out all fields");
             return;
         }
 
         try {
-            let finalImageName = "";
+            let finalImageName = editingImageName || "";
 
             if(selectedFile) {
                 finalImageName = generateImageFilename(name, selectedFile);
@@ -96,9 +97,10 @@ export default function Dashboard() {
 
             setSelectedFile(null);
             setPreviewUrl(null);
-            setFormFlag(false);
             setEditingId(null);
+            setEditingImageName(null);
             setFormData({name: "", video: "", desc: ""});
+            setFormFlag(false);
 
             await resetReleases();
 
@@ -154,6 +156,8 @@ export default function Dashboard() {
         }); 
 
         setPreviewUrl(`/images/${release.imageName}`);
+        setSelectedFile(null);
+        setEditingImageName(release.imageName);
         setFormFlag(true);
     }
 
@@ -286,7 +290,6 @@ export default function Dashboard() {
                             type="file" 
                             accept="artwork/*"
                             onChange={handleImageSelect}
-                            required
                             className="border border-[#e07a5f] rounded px-4 py-2 text-black placeholder-gray-400 focus-[#d75a4a] outline-none transition"
                         />
                         {previewUrl && (        
