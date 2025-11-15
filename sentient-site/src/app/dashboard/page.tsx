@@ -51,7 +51,7 @@ export default function Dashboard() {
     }
 
     function generateImageFilename(name: string, file: File) {
-        const camelCaseName = name.split(" ").map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase()).join("");
+        const camelCaseName = name.replace(/[^a-zA-Z0-9 ]/g, "").split(" ").map((word) => word[0].toUpperCase() + word.slice(1).toLowerCase()).join("");
         const extension = file.name.split(".").pop();
 
         return`${camelCaseName}.${extension}`;
@@ -131,7 +131,7 @@ export default function Dashboard() {
         const releasesWithUrls = await Promise.all(
             data.map(async (release: Releases) => {
                 try {
-                    const image = await getImageUrl(release.imageName.slice(9));
+                    const image = await getImageUrl(release.imageName);
                     return {
                         ...release,
                         imageUrl: image
