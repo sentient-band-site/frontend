@@ -12,3 +12,8 @@ export interface User {
     email: string;
     role: string;
 }
+
+export interface Props {
+    children: React.ReactNode;
+    distance?: number;
+}

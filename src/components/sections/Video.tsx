@@ -1,4 +1,4 @@
-export function Video(props: { src: string; title: string }) {
+const Video = (props: { src: string; title: string }) => {
   return (
     <>
       <iframe
@@ -10,3 +10,5 @@ export function Video(props: { src: string; title: string }) {
     </>
   );
 }
+
+export default Video;

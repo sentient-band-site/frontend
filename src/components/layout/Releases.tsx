@@ -7,7 +7,8 @@ import fallbackData from "../../utils/data.json";
 
 import Loader from "../sections/Loader";
 import Image from "next/image";
-import { Video } from "../sections/Video";
+import Video from "../sections/Video";
+import Parallax from "../sections/Parallax";
 import { getReleases } from "@/lib/releases";
 import { getImage } from "@/lib/images";
 
@@ -71,43 +72,45 @@ const Releases = () => {
   if(error) return <p className="text-center text-red-500 mt-10">{error}</p>
 
   return (
-    <>
-      {[...releases].reverse().map((single, index) => (
-        <motion.div
-          key={index}
-          id={index == 0 ? "new-release" : "releases"}
-          className="scroll-mt-16 overflow-x-hidden"
-          initial={
-            index % 2 == 0 ? { x: -100, opacity: 0 } : { x: 100, opacity: 0 }
-          }
-          whileInView={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          viewport={{ once: true }}
-        >
-          <div className="flex flex-col md:flex-row justify-center m-10 md:m-32">
-            <div className="relative md:w-1/2 h-[300px] lg:h-[800px]">
-                <Image
-                  src={single.imageUrl || single.imageName}
-                  fill
-                  alt={single.name}
-                  className="object-contain"
-                  />
+    <section className="relative">
+      <div className="flex flex-col">
+        {[...releases].reverse().map((single, index) => (
+            <motion.div
+              key={index}
+              id={index == 0 ? "new-release" : "releases"}
+              className="snap-center scroll-mt-16 overflow-x-hidden"
+              initial={
+                index % 2 == 0 ? { x: -100, opacity: 0 } : { x: 100, opacity: 0 }
+              }
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              viewport={{ once: true }}
+              >
+              <div className="flex flex-col md:flex-row justify-center m-10 md:m-32">
+                <div className="relative md:w-1/2 h-[300px] lg:h-[800px]">
+                    <Image
+                      src={single.imageUrl || single.imageName}
+                      fill
+                      alt={single.name}
+                      className="object-contain"
+                      />
+                  </div>
+                <div className="md:ml-10 md:w-1/2">
+                  <div className="w-full md:h-72 md:mb-5">
+                    <Video src={single.video} title={single.name} />
+                  </div>
+                  <div className="mt-10 md:mt-0">
+                    <h2 className="mt-5 md:mt-0 mb-5 text-2xl md:text-xl font-bold uppercase tracking-wide text-center sm:text-left">
+                      {single.name}
+                    </h2>
+                    <p className="lg:text-xl md:mt-16">{single.desc}</p>
+                  </div>
+                </div>
               </div>
-            <div className="md:ml-10 md:w-1/2">
-              <div className="w-full md:h-72 md:mb-5">
-                <Video src={single.video} title={single.name} />
-              </div>
-              <div className="mt-10 md:mt-0">
-                <h2 className="mt-5 md:mt-0 mb-5 text-2xl md:text-xl font-bold uppercase tracking-wide text-center sm:text-left">
-                  {single.name}
-                </h2>
-                <p className="lg:text-xl md:mt-16">{single.desc}</p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      ))}
-    </>
+            </motion.div>
+        ))}
+      </div>
+    </section>
   );
 };
 
