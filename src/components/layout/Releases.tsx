@@ -8,7 +8,6 @@ import fallbackData from "../../utils/data.json";
 import Loader from "../sections/Loader";
 import Image from "next/image";
 import Video from "../sections/Video";
-import Parallax from "../sections/Parallax";
 import { getReleases } from "@/lib/releases";
 import { getImage } from "@/lib/images";
 

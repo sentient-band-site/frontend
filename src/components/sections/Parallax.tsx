@@ -9,7 +9,7 @@ import {
 } from "motion/react"
 import { useRef } from "react"
 
-import type { Props } from "@/interfaces/interfaces"
+// import type { Props } from "@/interfaces/interfaces"
 
 function useParallax(value: MotionValue<number>, distance: number) {
     return useTransform(value, [0, 1], [-distance, distance])
@@ -29,7 +29,6 @@ function Image({ id }: { id: number }) {
                 />
             </div>
             <motion.h2
-                // Hide until scroll progress is measured
                 initial={{ visibility: "hidden" }}
                 animate={{ visibility: "visible" }}
                 style={{ y }}
