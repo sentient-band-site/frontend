@@ -149,13 +149,15 @@ export default function Dashboard() {
 
     async function handleEdit(release: Releases) {
         setEditingId(release.id!);
+
         setFormData({
             name: release.name,
             video: release.video,
             desc: release.desc,
         }); 
 
-        setPreviewUrl(`/images/${release.imageName}`);
+        setPreviewUrl(release.imageUrl || null);
+        
         setSelectedFile(null);
         setEditingImageName(release.imageName);
         setFormFlag(true);
@@ -289,6 +291,7 @@ export default function Dashboard() {
                         <input 
                             type="file" 
                             accept="artwork/*"
+                            disabled={!!editingId}
                             onChange={handleImageSelect}
                             className="border border-[#e07a5f] rounded px-4 py-2 text-black placeholder-gray-400 focus-[#d75a4a] outline-none transition"
                         />
