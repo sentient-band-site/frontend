@@ -75,7 +75,7 @@ export default function Login() {
     let buttonDisplay;
 
     if(loading) {
-        buttonDisplay = <Loader message="Loading..."/>;
+        buttonDisplay = <Loader/>;
     } else {
         buttonDisplay = registerFlag ? "Register" : "Login";
     }
