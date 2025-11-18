@@ -1,8 +1,10 @@
-const Loader = ({message}: {message: string}) => {
+const Loader = ({message}: {message?: string}) => {
     return (
-        <div className="flex flex-col items-center justify-center p-4">
-            <div className="animate-spin rounded-full h-8 w-8 border-t-4 border-[#e07a5f] border-solid mb-3"></div>
-            <p className="text-gray-500 text-sm font-semibold font-style: italic">{message}</p>
+        <div className="flex flex-col items-center justify-center">
+            <div className="animate-spin rounded-full h-6 w-6 border-[#e07a5f] border-solid"></div>
+            {message &&
+                <p className="text-gray-500 text-sm font-semibold font-style:italic mt-4">{message}</p>
+            }
         </div>
     )
 }
