@@ -33,7 +33,7 @@ const Contact = () => {
               type="email"
               name="email"
               placeholder="you@example.com"
-              className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-white bg-gray-200"
+              className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-white bg-gray-500 placeholder-black"
             />
             <ValidationError
               prefix="Email"
@@ -50,7 +50,7 @@ const Contact = () => {
               name="message"
               rows={4}
               placeholder="Message here..."
-              className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-white bg-gray-200"
+              className="border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-white bg-gray-500 placeholder-black"
             />
             <ValidationError
               prefix="Message"
