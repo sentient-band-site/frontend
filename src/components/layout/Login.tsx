@@ -7,7 +7,7 @@ import { User } from "@/interfaces/interfaces";
 import Loader from "@/components/sections/Loader";
 
 
-export default function Login() {
+const Login = () => {
     const { user, loginUser, registerUser, checkAuth } = useAuth();
     const router = useRouter();
 
@@ -187,3 +187,5 @@ export default function Login() {
         </main>
     )
 }
+
+export default Login;
