@@ -46,12 +46,14 @@ Ensure you have the following installed:
 1. **Clone the repository**:
     ```bash
     git clone [https://github.com/sentient-band-site/frontend.git]
-    cd resume-builder
+    cd frontend
     ```
 
 2. **Install dependencies**:
     ```bash
     npm install
+    spx prisma generate
+    npx prisma migrate dev
     ```
 
 4. **Run the application**:
