@@ -1,17 +1,28 @@
-# Sentient Site Frontend
+# Sentient Site - Frontend
 
-A full-stack band website for the band **Sentient**, built with **Next.js**, **TypeScript**, and **Tailwind CSS**. This frontend integrates with the backend (Express.js + JWT Authentication) and Supabase's database and bucket storage to manage site content to allow for authenticated users to announce new releases to the band's fans.
+A Frontend application for the **Sentient** Band's content management and release platform. Built with **Next.js**, **TypeScript**, and **Tailwind CSS**, this client application consumes a REST API provided by the backend and enables authenticated administrators to manage media assets and new music releases. 
+
+---
+
+## Overview
+The frontend is responsible for:
+- Rendering public-facing release content
+- Handling authenticated admin workflows
+- Managing client-side route protection
+- Integrating with backend APIs for content retrieval and updates
+- Displaying media content
+
+For full system architecture, see the backend repository
 
 ---
 
 ## Features
 
-- **Dyanmic Releases Display** - fetches album, video and image data via API calls from the backend.
-- **Supabase Integration** - Stores and retrieves album artwork in an image bucket as well as users and release data in a PostgreSQL database
-- **JWT Authentication** - Enables protected routes to ensure admin-only access to data
-- **Optimized Media Display** - Uses Next.js Image Optimization for faster performance.
-- **Reponsive UI** - Styled with Tailwind CSS for a clean, mobile first, and modern design
-- **Animated Transitions** - Utilizing Framer Motion for smooth visual effects.
+- **Dyanmic Releases Display** - fetches album, video and image data backend REST endpoints
+- **JWT-Based Authentication Flow** - protected admin routes enforced via backend issued-tokens
+- **Optimized Media Display** - Uses Next.js Image Optimization for faster performance
+- **Reponsive UI** - Tailwind CSS mobile first styling
+- **Animated Transitions** - Framer Motion integration
 
 ---
 
@@ -25,11 +36,20 @@ A full-stack band website for the band **Sentient**, built with **Next.js**, **T
 #### ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ### **Animations** 
 #### ![Framer Motion](https://img.shields.io/badge/framer_motion-ffca28?style=for-the-badge&logo=framer&logoColor=%23ffffff&color=%237178f6)
-### **Media Handling**
-#### ![Supabase](https://shields.io/badge/supabase-black?logo=supabase&style=for-the-badge)
-### **Authentication** | JWT (handled via backend API)
-### **Build Tool** | Next Build
+### **Media and Storage**
+#### Supabase(PostgreSQL + Storage Buckets via backend API)
+### **Authentication** 
+#### JWT-based authentication issued and validated by backend service
 
+---
+## Architecture Role Winthin System
+The frontend operates strictly as a client layer:
+- Communicates with the backend via RESTful API endpoints
+- Does not directly access the database
+- Relies on backend middleware for authorization validation
+- Handles UI-level route guarding based on token presence
+
+This separation enforces clear client-server boundaries and prevents exporsure of database credentials or storage logic.
 ---
 
 ## Project Setup
@@ -38,8 +58,8 @@ A full-stack band website for the band **Sentient**, built with **Next.js**, **T
 
 Ensure you have the following installed:
 
-- **Node.js** (v22.6.0+)
-- **npm** (v10.8.2+)
+- **Node.js** (v18+ recommended)
+- **npm**
 
 ### Installation
 
@@ -52,8 +72,6 @@ Ensure you have the following installed:
 2. **Install dependencies**:
     ```bash
     npm install
-    spx prisma generate
-    npx prisma migrate dev
     ```
 
 4. **Run the application**:
